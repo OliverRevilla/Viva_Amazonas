@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<title> Mantenimiento de documentos </title> 
+<link rel="stylesheet" href="main1.css"/>
+		<meta http-equiv = "Content Type" content="text/html; charset=utf-8"/>
+		<meta charset="UTF-8">
+		<style type="text/css">
+		.testbox a{
+				font-size: 12px;
+				text-decoration:none;
+				display: block;
+				border:1px solid #00b894;
+				width: 150px;
+				height: 20px;
+				padding-top: 3px;
+				text-align: center;
+				margin: auto;
+				background-color: white; 
+				color: black;
+				font-family: arial;
+				box-shadow: 0px 0px 5px #000;
+				border-radius: 4px;  }
+	  </style>
+</head>
+
+<body>
+      <div class="testbox">
+      <font size=8 color="teal"> Mantenimiento de documentos </font></center>
+
+     <br/>
+     <hr/>
+     <table border = "1">
+         
+         <tr>
+              <td> id_documento</td>
+              <td> Anexos </td>
+              <td> Descripcion </td> 
+              <td> Estado </td>   
+              <td> Acciones</td>    
+         </tr>
+         <?php
+         session_start();
+         
+         $usuarioLogin = $_SESSION('codyçusr')
+
+         $conexion = mysqli_connect("127.0.0.1", "root", "", "vive amazonas");
+
+         $sentencia = "SELECT id_documento, nombre_documento, tipo_documento, estado FROM documento_concurso WHERE estado=1";
+
+         $resultado = mysqli_query($conexion, $sentencia);
+         $numerofilas = mysqli_num_rows($resultado);
+         ?>    
+         <?php
+               while ($row = $resultado -> fetch_assoc());
+         ?>
+
+         <tr>
+               <td> <?php echo $row ('id_documento'); ?></td>
+               <td> <?php echo $row ('nombre_documento'); ?></td>
+               <td> <?php echo $row ('tipo_documento'); ?></td>
+               <td> <?php echo $row ('estado'); ?></td>
+               <td>
+                  <a href="Adjuntardocumento.php?ADJUNTAR=<?php echo $row['id_documento']; ?>">Adjuntar</a>
+                  <a href="mantenimientodocumento.php?eliminar=<?php echo $row['id_documento']; ?>">Eliminar</a>
+                  <form action="editar documento.html" method="POST"
+         <br><a href='editar documento.html'> Editar </a></br>
+                
+              </td>
+
+         </tr>
+
+
+      <center>
+         <br><font color="blue"> *Cada concurso tiene sus respectivas bases dependiendo la etapa en la que se encuentre</font> </br>
+         <br><a href="basesconcurso.html"target="_blank">Descarga las bases aquí</a></br>
+         <br><a href='paginaprincipal.html'> Regresar a inicio</a></br>
+         
+         
+</body>
+</html>

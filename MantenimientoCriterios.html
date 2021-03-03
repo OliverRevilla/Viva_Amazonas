@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<title> Mantenimiento de documentos </title> 
+<link rel="stylesheet" href="main1.css"/>
+		<meta http-equiv = "Content Type" content="text/html; charset=utf-8"/>
+		<meta charset="UTF-8">
+		<style type="text/css">
+		.testbox a{
+				font-size: 12px;
+				text-decoration:none;
+				display: block;
+				border:1px solid #00b894;
+				width: 150px;
+				height: 20px;
+				padding-top: 3px;
+				text-align: center;
+				margin: auto;
+				background-color: white; 
+				color: black;
+				font-family: arial;
+				box-shadow: 0px 0px 5px #000;
+				border-radius: 4px;  }
+	  </style>
+</head>
+
+<body>
+      <div class="testbox">
+      <font size=8 color="teal"> Mantenimiento de Criterios </font></center>
+
+     <br/>
+     <hr/>
+     <table border = "1">
+         
+         <tr>
+              <td> Criterios de Evaluación</td>
+              <td> Descripcion de criterio</td> 
+              <td> Puntaje (en porcentaje) </td>   
+              <td> Acciones</td>
+         </tr>
+         
+ 
+         <tr>
+                 
+                  <form action="EditarCriterios.html" method="POST"
+                  <br><a href='EditarCriterios.html'> Editar </a></br>
+                  <form action="AgregarCriterios.html" method="POST"
+                  <br><a href='AgregarCriterios.html'> Agregar </a></br> 
+                  <a href="CriterioosConcurso.php?eliminar = <?php echo $row['id_criterio']; ?>">Eliminar</a>
+         </td>
+                
+              </td>
+              
+         </tr>
+         
+
+      <center>
+         <br><font color="teal"> *Cada concurso tiene sus respectivos criterios y puntajes</font> </br>
+         <br><a href='DocumentosConcurso.php'> Regresar a inicio</a></br>
+         
+         
+</body>
+</html>

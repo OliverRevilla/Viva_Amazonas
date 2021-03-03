@@ -1,0 +1,66 @@
+<html>
+
+    <head>
+        <title> Agregar Criterios de Evaluación </title> 
+        <style type="text/css">
+            body {
+                background-image: url("fondo.jpg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                color: rgba(72, 181, 196, 0.904);
+            }
+            </style>
+        </head>
+
+<body>
+    <h1>Agregar Criterios de Evaluación</h1>
+    <br />
+    <hr />
+    <?php
+    session_start(); 
+    $usuarioLogin = $_SESSION['codusr'];
+
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "vive amazonas");
+
+    $id_documento = $_GET['editar'];
+    $sentencia = "SELECT id_criterio, descripcion_genera, descripcion_criterio, puntaje FROM cc_usuario WHERE id_criterio=$id_criterio;";
+
+    $resultado = mysqli_query($conexion, $sentencia);
+
+    $fila = $resultado->fetch_assoc();
+
+    ?>
+    <form action="MantenimientoCriterios.html" method="POST">
+
+        <input type="hidden" name="id_criterio_actualizado" value="<?php echo $id_criterio; ?>">
+        <table border="1">
+            <tr>
+                <td>Criterio de Evaluación</td>
+                <td>
+                    <input type="text" name="editar evaluación" value="Criterio de Evaluación ">
+                </td>
+            </tr>
+            <tr>
+                <td>Descripción del criterio</td>
+                <td>
+                    <input type="text" name="editar_descripcion" value="Descripción del criterio ">
+                </td>
+            </tr>
+            <tr>
+                <td>Puntaje en porcentaje</td>
+                <td>
+                    <input type="text" name="editar_estado" value="Puntaje ej. 20%">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Guardar cambios" name="actualizar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

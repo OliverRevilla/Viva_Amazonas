@@ -1,0 +1,77 @@
+<html>
+
+    <head>
+        <title> Editar Criterios de Evaluación </title> 
+        <link rel="stylesheet" href="main1.css"/>
+                <meta http-equiv = "Content Type" content="text/html; charset=utf-8"/>
+                <meta charset="UTF-8">
+                <style type="text/css">
+                .testbox a{
+                        font-size: 12px;
+                        text-decoration:none;
+                        display: block;
+                        border:1px solid #00b894;
+                        width: 150px;
+                        height: 20px;
+                        padding-top: 3px;
+                        text-align: center;
+                        margin: auto;
+                        background-color: white; 
+                        color: black;
+                        font-family: arial;
+                        box-shadow: 0px 0px 5px #000;
+                        border-radius: 4px;  }
+              </style>
+        </head>
+
+<body>
+    
+    <h1>Editar Criterios de Evaluación</h1>
+    <br />
+    <hr />
+    <?php
+    session_start(); 
+    $usuarioLogin = $_SESSION['codusr'];
+
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "vive amazonas");
+
+    $id_documento = $_GET['editar'];
+    $sentencia = "SELECT id_criterio, descripcion_genera, descripcion_criterio, puntaje FROM cc_usuario WHERE id_criterio=$id_criterio;";
+
+    $resultado = mysqli_query($conexion, $sentencia);
+
+    $fila = $resultado->fetch_assoc();
+
+    ?>
+    <form action="MantenimientoCriterios.html" method="POST">
+
+        <input type="hidden" name="id_criterio_actualizado" value="<?php echo $id_criterio; ?>">
+        <table border="1">
+            <tr>
+                <td>Criterio de Evaluación</td>
+                <td>
+                    <input type="text" name="editar evaluación" value="Criterio de Evaluación ">
+                </td>
+            </tr>
+            <tr>
+                <td>Descripción del criterio</td>
+                <td>
+                    <input type="text" name="editar_descripcion" value="Descripción del criterio ">
+                </td>
+            </tr>
+            <tr>
+                <td>Puntaje en porcentaje</td>
+                <td>
+                    <input type="text" name="editar_estado" value="Puntaje ej. 20%">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Guardar cambios" name="actualizar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
